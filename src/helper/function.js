@@ -1,5 +1,5 @@
 // используется для получения данных с хранилища
 export const getLocalStorage = () => {
-	const cart = JSON.parse(localStorage.getItem('cart'))
-	return cart
+	const fav = JSON.parse(localStorage.getItem('fav'))
+	return fav
 }

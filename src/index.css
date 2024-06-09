@@ -5,6 +5,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
 }
 
 code {
@@ -163,14 +164,20 @@ code {
 /* navbar end */
 /* карточки */
 
-/* Стили для контейнера курсов */
 .courses-container {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	padding: 30px;
-	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 45px;
 	background-color: #3b0000;
+}
+
+.courses-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
 }
 
 .product-card {
@@ -178,14 +185,13 @@ code {
 	border: 2px solid #e50914;
 	border-radius: 8px;
 	color: #fff;
-	margin: 20px;
+	margin: 10px;
 	padding: 20px;
-	max-width: 400px;
+	width: 300px;
 	text-align: center;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	font-family: 'Poppins', sans-serif;
 	position: relative;
-	z-index: 1;
 }
 
 .product-title {
@@ -201,16 +207,15 @@ code {
 	margin-bottom: 15px;
 }
 
-/* Стили для описания продукта */
 .product-description {
 	font-size: 0.9em;
 	margin-bottom: 20px;
 }
 
-/* Стили для кнопок редактирования и удаления */
 .product-buttons {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .edit-button,
@@ -232,12 +237,68 @@ code {
 	color: #fff;
 }
 
+/* Стили для иконки "Watch Later" */
+.watch-later-icon {
+	width: 30px;
+	height: 30px;
+
+	border-radius: 50%;
+	padding: 5px;
+	margin-left: 10px;
+}
+
+/* Стили для пагинации */
+.pagination-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.pagination-page-info {
+	margin-bottom: 10px;
+	color: #fff;
+	font-size: 1em;
+}
+
+.pagination-buttons {
+	display: flex;
+	gap: 10px;
+}
+
+.pagination-button {
+	background-color: #1c1c1e;
+	color: #e50914;
+	border: 2px solid #e50914;
+	border-radius: 8px;
+	padding: 8px 16px;
+	cursor: pointer;
+	font-size: 1em;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-button:hover {
+	background-color: #3b0000;
+	color: #ffffff;
+}
+
+.pagination-button.active {
+	background-color: #e50914;
+	color: #ffffff;
+}
+
+.pagination-button.active:hover {
+	background-color: #ff1e1e;
+}
+
 /* карточки */
 /* mainPage */
-.video-bg {
+
+.unique-video-bg {
 	position: relative;
 }
-#video-background {
+
+.unique-video-background {
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -246,7 +307,8 @@ code {
 	background-size: cover;
 	position: relative;
 }
-#text-overlay {
+
+.unique-text-overlay {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -257,14 +319,16 @@ code {
 	z-index: 1;
 	margin-top: 120px;
 }
-#text-overlay h1 {
+
+.unique-text-overlay h1 {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-family: Poppins;
 	margin-top: 100px;
 }
-#text-overlay p {
+
+.unique-text-overlay p {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -273,7 +337,8 @@ code {
 	font-size: 23px;
 	margin-top: 25px;
 }
-button {
+
+.unique-button {
 	background-color: red;
 	color: white;
 	border: none;
@@ -285,10 +350,11 @@ button {
 	font-size: 25px;
 }
 
-button:hover {
+.unique-button:hover {
 	background-color: white;
 	color: red;
 }
+
 /* mainPage */
 
 /* Watch courses */
@@ -337,6 +403,7 @@ button:hover {
 	justify-content: center;
 	font-family: Poppins;
 }
+
 #text-2 h1 {
 	color: #fff;
 	display: flex;
@@ -347,16 +414,19 @@ button:hover {
 	font-size: 50px;
 	margin-bottom: 320px;
 }
+
 .name {
 	text-shadow: 2px 2px 8px red;
-	font-weight: 700px;
+	font-weight: 700; /* Исправляем значение font-weight */
 	font-family: Poppins;
 }
+
 .des {
 	font-family: Poppins;
-	font-weight: 400px;
+	font-weight: 400; /* Исправляем значение font-weight */
 	text-shadow: 4px 4px 16px red;
 }
+
 .container-2 {
 	position: relative;
 	top: 50%;
@@ -404,11 +474,11 @@ button:hover {
 	left: calc(50% + 440px);
 }
 
-/* here n = 0, 1, 2, 3,... */
 .slide .item:nth-child(n + 6) {
 	left: calc(50% + 660px);
 	opacity: 0;
 }
+
 .item .content {
 	position: absolute;
 	top: 50%;
@@ -417,19 +487,20 @@ button:hover {
 	text-align: left;
 	color: #eee;
 	transform: translate(0, -50%);
-	font-family: system-ui;
 	display: none;
 }
 
-.slide .item:nth-child(2) .content {
+.slide .item.active .content {
 	display: block;
+	z-index: 2; /* Добавляем z-index для текста */
 }
 
-.content .name {
+.content .name-text {
 	font-size: 40px;
 	text-transform: uppercase;
 	font-weight: bold;
 	opacity: 0;
+	color: #fff; /* Устанавливаем цвет текста контрастным */
 	animation: animate 1s ease-in-out 1 forwards;
 }
 
@@ -437,6 +508,7 @@ button:hover {
 	margin-top: 10px;
 	margin-bottom: 20px;
 	opacity: 0;
+	color: #eee; /* Устанавливаем цвет текста */
 	animation: animate 1s ease-in-out 0.3s 1 forwards;
 }
 
@@ -445,6 +517,8 @@ button:hover {
 	border: none;
 	cursor: pointer;
 	opacity: 0;
+	background-color: #fff; /* Устанавливаем фон кнопки */
+	color: #000; /* Цвет текста кнопки */
 	animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
 
@@ -454,7 +528,6 @@ button:hover {
 		transform: translate(0, 100px);
 		filter: blur(33px);
 	}
-
 	to {
 		opacity: 1;
 		transform: translate(0);
@@ -489,8 +562,11 @@ button:hover {
 	vertical-align: middle;
 	line-height: 1;
 }
+
 /* slider style */
 /* watchlater */
+
+/* Основные стили страницы */
 .watch-later-background {
 	background-color: #3b0000;
 	min-height: 100vh;
@@ -508,6 +584,7 @@ button:hover {
 	color: white;
 }
 
+/* Стили для заголовка и списка */
 .watch-later-page h1 {
 	font-size: 2.5em;
 	margin-bottom: 20px;
@@ -517,6 +594,7 @@ button:hover {
 	margin-top: 0;
 }
 
+/* Стили для элементов списка */
 .watch-later-item {
 	display: flex;
 	align-items: center;
@@ -536,42 +614,402 @@ button:hover {
 	border-radius: 10px;
 }
 
+/* Стили для текста и кнопки внутри элемента */
 .video-details {
 	display: flex;
 	flex-direction: column;
 }
 
-.video-details h3 {
+/* Заголовок видео */
+.video-detail-text {
 	font-size: 1.5em;
 	margin-bottom: 10px;
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	background-color: transparent;
 }
 
-.delete-button-watch-later {
+/* Стили для кнопки */
+.watch-later-btn {
 	background-color: #ff4c4c;
 	color: white;
 	border: none;
-	padding: 10px 15px;
-	font-size: 1.2em;
+	width: 100px;
+	height: 35px;
+	font-size: 1em;
 	cursor: pointer;
 	margin-top: 10px;
 	border-radius: 5px;
+	font-family: 'Poppins', sans-serif;
 }
 
-.delete-button-watch-later:hover {
+/* Стили при наведении на кнопку */
+.watch-later-btn:hover {
 	background-color: #ff0000;
-	color: white; /* Добавляем цвет текста при наведении */
+	color: white;
 }
 
 /* watchlater */
-/* icon  */
-.watch-later-icon {
-	width: 50px; /* Размер иконки */
-	height: 50px;
-	margin-top: 68px;
-	margin-left: 10px; /* Отступ между кнопкой и иконкой */
-	border: 2px solid white; /* Белая обводка вокруг иконки */
-	border-radius: 50%; /* Создаем круглую форму для иконки */
-	padding: 5px; /* Увеличиваем отступ внутри обводки */
+
+/* Admin page */
+.App,
+.AppShit {
+	padding-top: 10px;
+	background-color: #3b0000;
+	padding-bottom: 260px;
 }
 
-/* icon  */
+.auth-container {
+	padding: 20px;
+	background-color: #5b0000;
+
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	color: white;
+	max-width: 400px;
+	margin: 20px auto auto auto;
+}
+
+.auth-container form {
+	display: flex;
+	flex-direction: column;
+}
+
+.auth-container h2 {
+	margin-bottom: 20px;
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
+}
+
+.auth-container input {
+	padding: 10px;
+	margin-bottom: 15px;
+	border-radius: 4px;
+	border: none;
+	font-family: 'Poppins', sans-serif;
+}
+
+.auth-container button {
+	background-color: #ff4c4c;
+	color: white;
+	border: none;
+	padding: 15px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-family: 'Poppins', sans-serif;
+	transition: background-color 0.3s;
+}
+
+.auth-container button:hover {
+	background-color: white;
+	color: #ff4c4c;
+}
+
+.auth-container .error {
+	color: #ff1e1e;
+	text-align: center;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/*  */
+
+.auth-details-container {
+	background-color: #5b0000;
+	padding: 20px;
+	border-radius: 8px;
+	max-width: 400px;
+	margin: 20px auto;
+	text-align: center;
+}
+
+.auth-details-container p {
+	margin-top: 20px;
+	color: white;
+	font-family: 'Poppins', sans-serif;
+}
+
+.auth-details-container button {
+	padding: 10px;
+	background-color: #ff4c4c;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	font-family: 'Poppins', sans-serif;
+	margin-top: 10px;
+}
+
+.auth-details-container button:hover {
+	background-color: white;
+	color: red;
+}
+
+/*  */
+/* Admin page  */
+/*  discover more*/
+/* Стиль для контейнера */
+.container-3 {
+	position: relative;
+	width: 100%;
+	height: 120vh; /* Занимает всю высоту видимой области */
+	overflow: hidden;
+	display: flex;
+	align-items: center; /* Вертикальное выравнивание */
+	justify-content: center; /* Горизонтальное выравнивание */
+}
+
+/* Стиль для блока с изображением */
+.photo-3 {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+/* Стиль для изображения */
+.photo-3 img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Позволяет изображению сохранять пропорции */
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* Стиль для текста */
+#text-3 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	text-align: center;
+	z-index: 1;
+	max-width: 80%; /* Ограничение ширины текста */
+	padding: 20px;
+}
+
+/* Стиль для заголовка */
+#text-3 h1 {
+	font-family: Poppins, sans-serif;
+	font-size: 2.5em; /* Или 1.6em как в оригинале */
+	margin: 0 0 20px 0;
+	color: #fff;
+}
+
+/* Стиль для параграфов */
+#text-3 p {
+	font-family: Poppins, sans-serif;
+	font-weight: 700;
+	font-size: 23px; /* Или 19px как в оригинале */
+	margin: 22px 0;
+	color: #fff;
+}
+
+/* Стиль для кнопки */
+#btn-3 {
+	font-size: 1.2em; /* Или 20px как в оригинале */
+	padding: 20px 50px;
+	font-family: Poppins, sans-serif;
+	background-color: red;
+	color: white;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+	margin-top: 20px; /* Или 70px как в оригинале */
+}
+
+/* Стиль для кнопки при наведении */
+#btn-3:hover {
+	background-color: white;
+	color: red;
+}
+
+/*  discover more*/
+/*  */
+.thin-line {
+	height: 1px; /* Высота полоски */
+	background-color: white; /* Цвет полоски */
+}
+#text-2 p {
+	padding-top: 60px;
+	font-size: 24px;
+	margin-bottom: 20px;
+	margin-top: 70px;
+	color: lawngreen;
+	display: flex;
+	justify-content: center;
+	font-family: Poppins;
+}
+/*  */
+/*  */
+#text-4 p {
+	font-size: 24px;
+	margin-bottom: 20px;
+	margin-top: 58px;
+	color: rgb(255, 208, 0);
+	display: flex;
+	justify-content: center;
+	font-family: Poppins;
+}
+#text-4 h1 {
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	margin-top: 2px;
+	font-family: Poppins;
+	font-weight: 700;
+	font-size: 50px;
+	margin-bottom: 60px;
+}
+#text-5 p {
+	margin-top: 10px;
+	color: rgb(156, 156, 156);
+	display: flex;
+	justify-content: center;
+	font-family: Poppins;
+	font-weight: 500;
+	font-size: 45px;
+}
+#text-5 h1 {
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	margin-top: 80px;
+	font-family: Poppins;
+	font-weight: 700;
+	font-size: 50px;
+}
+.video-bg-footer {
+	position: relative;
+	width: 100%; /* Ширина контейнера равна 100% экрана или родительского элемента */
+}
+.video-bg-footer video {
+	width: 100%; /* Видео занимает всю доступную ширину контейнера */
+	height: auto; /* Высота автоматически рассчитывается, чтобы сохранить соотношение сторон */
+	top: 0;
+	left: 0;
+}
+#btn-5 {
+	font-size: 22px;
+	padding: 20px 50px 20px 50px;
+	margin-top: 60px;
+	font-family: Poppins, sans-serif;
+	background-color: red;
+	color: white;
+	transition: background-color 0.3s, color 0.3s;
+}
+#btn-5:hover {
+	background-color: white;
+	color: red;
+}
+#text-5 {
+	text-align: center;
+}
+footer {
+	background-color: #000000;
+}
+.footerContainer {
+	width: 100%;
+	padding: 70px 30px 20px;
+}
+.socialIcons {
+	margin-left: -2px;
+	display: flex;
+	justify-content: center;
+}
+.socialIcons a {
+	text-decoration: none;
+	padding: 10px;
+	background-color: white;
+	margin: 10px;
+	border-radius: 50%;
+}
+.socialIcons a i {
+	font-size: 2em;
+	color: black;
+	opacity: 0, 9;
+}
+/* Hover affect on social media icon */
+.socialIcons a:hover {
+	background-color: #111;
+	transition: 0.5s;
+}
+.socialIcons a:hover i {
+	color: white;
+	transition: 0.5s;
+}
+.footerNav {
+	margin: 30px 0;
+	font-family: Poppins;
+}
+.footerNav ul {
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+}
+.footerNav ul li a {
+	color: white;
+	margin: 20px;
+	text-decoration: none;
+	font-size: 1.3em;
+	opacity: 0.7;
+	transition: 0.5s;
+}
+.footerNav ul li a:hover {
+	opacity: 1;
+}
+.footerBottom {
+	background-color: #000;
+	padding: 20px;
+	text-align: center;
+	font-family: Poppins;
+	margin-left: 100px;
+}
+.footerBottom p {
+	color: white;
+	margin-right: 70px;
+}
+.designer {
+	opacity: 0.7;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 400;
+	margin: 0px 5px;
+}
+@media (max-width: 700px) {
+	.footerNav ul {
+		flex-direction: column;
+	}
+	.footerNav ul li {
+		width: 100%;
+		text-align: center;
+		margin: 10px;
+	}
+	.socialIcons a {
+		padding: 8px;
+		margin: 4px;
+	}
+}
+
+.thin-line-1 {
+	height: 1px;
+	background-color: white;
+	margin-top: 100px;
+}
+/*  */
+/* aboutPAge */
+/* aboutPAge */

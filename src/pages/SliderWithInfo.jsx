@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import tow_1 from '../home/assets/tow_1.webp'
 import tow_2 from '../home/assets/tow_2.webp'
 import tow_3 from '../home/assets/tow_3.webp'
@@ -6,10 +6,32 @@ import tow_4 from '../home/assets/tow_4.webp'
 import tow_5 from '../home/assets/41_1.webp'
 import tow_6 from '../home/assets/tow_5.jpg'
 
-const SliderWithInfo = () => {
+function SliderWithInfo() {
+	useEffect(() => {
+		const next = document.querySelector('.next')
+		const prev = document.querySelector('.prev')
+
+		const handleNextClick = () => {
+			const items = document.querySelectorAll('.item')
+			document.querySelector('.slide').appendChild(items[0])
+		}
+
+		const handlePrevClick = () => {
+			const items = document.querySelectorAll('.item')
+			document.querySelector('.slide').prepend(items[items.length - 1])
+		}
+
+		next.addEventListener('click', handleNextClick)
+		prev.addEventListener('click', handlePrevClick)
+
+		return () => {
+			next.removeEventListener('click', handleNextClick)
+			prev.removeEventListener('click', handlePrevClick)
+		}
+	}, [])
+
 	return (
-		<div>
-			<div className='thin-line'></div>
+		<div style={{ backgroundColor: 'black', marginTop: '-73px' }}>
 			<div id='text-2'>
 				<p>LEARN THE SECRETS</p>
 				<h1>TATE WISDOM</h1>
@@ -21,7 +43,7 @@ const SliderWithInfo = () => {
 							<div className='name'>Tales of Wudan</div>
 							<div className='des'>
 								The Tales of Wudan are original stories written by Andrew Tate
-								himself in the height of his fighting career. These lessons
+								himself in the height of his fighting career. ‍ These lessons
 								detail the wisdom he absorbed through his trials as he trained
 								under Master Po.
 							</div>
@@ -38,6 +60,7 @@ const SliderWithInfo = () => {
 							</div>
 						</div>
 					</div>
+					{/* Add other item elements similarly */}
 					<div className='item' style={{ backgroundImage: `url(${tow_3})` }}>
 						<div className='content'>
 							<div className='name'>YOUNG KINGS</div>
@@ -47,6 +70,7 @@ const SliderWithInfo = () => {
 							</div>
 						</div>
 					</div>
+					{/* Add other item elements similarly */}
 					<div className='item' style={{ backgroundImage: `url(${tow_4})` }}>
 						<div className='content'>
 							<div className='name'>Tate Pledge</div>
@@ -56,6 +80,7 @@ const SliderWithInfo = () => {
 							</div>
 						</div>
 					</div>
+					{/* Add other item elements similarly */}
 					<div className='item' style={{ backgroundImage: `url(${tow_5})` }}>
 						<div className='content'>
 							<div className='name'>41 TENETS</div>
@@ -67,6 +92,7 @@ const SliderWithInfo = () => {
 							</div>
 						</div>
 					</div>
+					{/* Add other item elements similarly */}
 					<div className='item' style={{ backgroundImage: `url(${tow_6})` }}>
 						<div className='content'>
 							<div className='name'>ANDREW TATE</div>
