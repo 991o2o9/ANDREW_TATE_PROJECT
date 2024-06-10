@@ -1,14 +1,15 @@
 import axios from 'axios'
 import React, { createContext, useContext, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { API } from '../helper/const'
+import { API, API_TYPE } from '../helper/const'
 export const CourseContext = createContext()
 export const useCourse = () => useContext(CourseContext)
 export const CoursesContextProvider = ({ children }) => {
 	const navigate = useNavigate()
 	const INIT_STATE = {
 		courses: [],
-		oneCourse: [],
+		oneCourse: {},
+		typeOfCourse: [],
 	}
 	const reducer = (state = INIT_STATE, action) => {
 		switch (action.type) {
@@ -16,6 +17,8 @@ export const CoursesContextProvider = ({ children }) => {
 				return { ...state, courses: action.payload }
 			case 'GET_ONE_COURSE':
 				return { ...state, oneCourse: action.payload }
+			case 'GET_TYPE_OF_COURSE':
+				return { ...state, typeOfCourse: action.payload }
 			default:
 				return state
 		}
@@ -54,12 +57,29 @@ export const CoursesContextProvider = ({ children }) => {
 		})
 	}
 	// get one course
-
 	// edit courses
 	const editCourse = async (id, editedCourseOfScam) => {
 		await axios.patch(`${API}/${id}`, editedCourseOfScam)
 		navigate('/courses')
 	}
+	// edit courses
+	// working with TypeOfCourse
+	// get !
+	const getTypeOfCourse = async () => {
+		const { data } = await axios.get(API_TYPE)
+		dispatch({
+			type: 'GET_TYPE_OF_COURSE',
+			payload: data,
+		})
+	}
+	// ! get
+	// create
+	const createTypeOfCourse = async NEW_TYPE => {
+		await axios.post(API_TYPE, NEW_TYPE)
+	}
+	// create
+	// working with TypeOfCourse
+
 	// filter
 	const fetchByParams = (query, value) => {
 		const search = new URLSearchParams(window.location.search)
@@ -71,8 +91,10 @@ export const CoursesContextProvider = ({ children }) => {
 		const url = `${window.location.pathname}?${search}`
 		navigate(url)
 	}
-	// edit courses
 	const values = {
+		createTypeOfCourse,
+		typeOfCourse: state.typeOfCourse,
+		getTypeOfCourse,
 		fetchByParams,
 		addCourses,
 		courses: state.courses,

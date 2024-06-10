@@ -1,8 +1,12 @@
 import React from 'react'
 import aboutPic from '../home/assets/aboutPagePic.webp'
+import { Link } from 'react-router-dom'
 function AboutUs() {
 	return (
-		<section className='about-us'>
+		<section
+			style={{ fontFamily: "'Poppins', sans-serif" }}
+			className='about-us'
+		>
 			<div className='about'>
 				<img src={aboutPic} className='pic' alt='Andrew Tate' />
 				<div className='text'>
@@ -28,9 +32,9 @@ function AboutUs() {
 						successful relationships with the people around you.
 					</p>
 					<div className='data'>
-						<a href='#' className='hire'>
+						<Link to={'/contact'} className='hire'>
 							Hire Me
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

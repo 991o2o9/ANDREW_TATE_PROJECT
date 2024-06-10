@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCourse } from '../context/CoursesContextProvider'
+import AddTypeOfCourse from './AddTypeOfCourse'
+import TypeOfCourseSelect from './TypeOfCourseSelect'
 
 const AddCourses = () => {
-	const { addCourses } = useCourse()
+	const { addCourses, getTypeOfCourse, typeOfCourse } = useCourse()
+	useEffect(() => {
+		getTypeOfCourse()
+	}, [])
 	const [courses, setCourses] = useState({
 		imagePreview: '',
 		title: '',
+		typeOfCourse: '',
 		shortContent: '',
 		video: '',
 		mainText: '',
@@ -49,6 +55,12 @@ const AddCourses = () => {
 					/>
 				</div>
 				<div className='form-group'>
+					<TypeOfCourseSelect
+						handleInput={handleInput}
+						typeOfCourse={typeOfCourse}
+					/>
+				</div>
+				<div className='form-group'>
 					<label htmlFor='courseDescription'>Short Course Description</label>
 					<input
 						type='text'
@@ -80,6 +92,7 @@ const AddCourses = () => {
 					<button onClick={handleClick} type='submit' className='update-button'>
 						Save
 					</button>
+					<AddTypeOfCourse />
 				</div>
 			</div>
 		</div>

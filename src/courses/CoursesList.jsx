@@ -38,6 +38,19 @@ const CoursesList = () => {
 
 	return (
 		<div className='courses-container'>
+			<div class='filter-container'>
+				<form class='filter-form'>
+					<div class='filter-group'>
+						<label for='category'>Category:</label>
+						<select id='category' class='filter-select'>
+							<option value='all'>All</option>
+							<option value='education'>Education</option>
+							<option value='entertainment'>Entertainment</option>
+							<option value='technology'>Technology</option>
+						</select>
+					</div>
+				</form>
+			</div>
 			<div className='courses-grid'>
 				{currentData().map(course => (
 					<CoursesCard key={course.id} elem={course} />
